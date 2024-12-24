@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from '@/contexts/AuthContext';
-import { QrCode, UserRound } from 'lucide-react';
+import { QrCode, UserRound, LogIn } from 'lucide-react';
 
 const Register = () => {
   const { register } = useAuth();
@@ -27,8 +28,8 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription>Create a new account to join Graceway Church</CardDescription>
+          <CardTitle>Join Graceway Church</CardTitle>
+          <CardDescription>Create your account to connect with our community</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex gap-4 mb-6">
@@ -52,7 +53,13 @@ const Register = () => {
 
           {isQRMode ? (
             <div className="text-center p-8">
-              <QrCode className="mx-auto h-32 w-32 text-gray-400" />
+              <div className="mx-auto w-48 h-48 bg-white p-2 rounded-lg shadow-sm">
+                <img 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://graceway.church/register" 
+                  alt="Registration QR Code"
+                  className="w-full h-full"
+                />
+              </div>
               <p className="mt-4 text-sm text-gray-600">Scan the QR code to register</p>
             </div>
           ) : (
@@ -86,6 +93,16 @@ const Register = () => {
               <Button type="submit" className="w-full">Register</Button>
             </form>
           )}
+
+          <div className="mt-6 text-center">
+            <Link
+              to="/login"
+              className="inline-flex items-center text-sm text-[#FFD700] hover:text-[#E6C200]"
+            >
+              <LogIn className="mr-2 h-4 w-4" />
+              Already have an account? Sign in
+            </Link>
+          </div>
         </CardContent>
       </Card>
     </div>

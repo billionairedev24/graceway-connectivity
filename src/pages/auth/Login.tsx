@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { UserPlus } from 'lucide-react';
 
 const Login = () => {
   const [phone, setPhone] = useState("");
@@ -48,21 +49,28 @@ const Login = () => {
           <div>
             <Button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#FFD700] hover:bg-[#E6C200] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FFD700]"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-[#FFD700] hover:bg-[#E6C200] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FFD700]"
             >
               Sign in
             </Button>
           </div>
 
-          <div className="text-sm text-center">
+          <div className="text-center">
             <Link
               to="/register"
-              className="font-medium text-[#FFD700] hover:text-[#E6C200]"
+              className="inline-flex items-center font-medium text-[#FFD700] hover:text-[#E6C200]"
             >
+              <UserPlus className="mr-2 h-4 w-4" />
               Don't have an account? Register here
             </Link>
           </div>
         </form>
+
+        <div className="mt-4 text-center text-sm text-gray-600">
+          <p>Mock Users:</p>
+          <p>Admin: 1234567890</p>
+          <p>User: 0987654321</p>
+        </div>
       </div>
     </div>
   );
