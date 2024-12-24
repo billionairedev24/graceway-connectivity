@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart, Users, Calendar, Bell, DollarSign, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Users, Calendar, Bell, DollarSign, TrendingUp, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Bar, BarChart as RechartsBarChart, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EventsView } from "@/components/events/EventsView";
 
-// Mock data for the attendance chart
 const attendanceData = [
   { month: 'Jan', attendance: 45 },
   { month: 'Feb', attendance: 52 },
@@ -15,28 +15,19 @@ const attendanceData = [
 ];
 
 const AdminDashboard = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <div className="space-x-2">
-          <Button onClick={() => navigate('/admin/events/new')}>
-            <Calendar className="mr-2 h-4 w-4" />
-            New Event
-          </Button>
-          <Button onClick={() => navigate('/admin/polls/new')}>
-            <BarChart className="mr-2 h-4 w-4" />
-            New Poll
-          </Button>
-          <Button onClick={() => navigate('/admin/announcements/new')}>
-            <Bell className="mr-2 h-4 w-4" />
-            New Announcement
-          </Button>
-        </div>
-      </div>
-      
+      <Tabs defaultValue="overview" className="w-full">
+        <TabsList className="mb-4">
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="events">Events</TabsTrigger>
+          <TabsTrigger value="polls">Polls</TabsTrigger>
+          <TabsTrigger value="announcements">Announcements</TabsTrigger>
+          <TabsTrigger value="budget">Budget</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="overview">
+          <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -159,6 +150,31 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
       </div>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="events">
+          <EventsView />
+        </TabsContent>
+
+        <TabsContent value="polls">
+          <div className="text-center py-8 text-muted-foreground">
+            Polls management coming soon...
+          </div>
+        </TabsContent>
+
+        <TabsContent value="announcements">
+          <div className="text-center py-8 text-muted-foreground">
+            Announcements management coming soon...
+          </div>
+        </TabsContent>
+
+        <TabsContent value="budget">
+          <div className="text-center py-8 text-muted-foreground">
+            Budget management coming soon...
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
