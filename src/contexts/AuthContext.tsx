@@ -8,7 +8,7 @@ interface User {
   phone: string;
   email: string;
   role: 'admin' | 'user';
-  profilePicture?: string; // Added this line
+  profilePicture?: string;
 }
 
 interface AuthContextType {
@@ -18,7 +18,8 @@ interface AuthContextType {
   register: (data: Omit<User, 'id' | 'role'>) => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null);
+// Export the context so it can be imported by useAuth
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 const mockUsers: User[] = [
   {
@@ -27,7 +28,7 @@ const mockUsers: User[] = [
     phone: '1234567890',
     email: 'admin@graceway.church',
     role: 'admin',
-    profilePicture: '/placeholder.svg' // Added default profile picture
+    profilePicture: '/placeholder.svg'
   },
   {
     id: '2',
@@ -35,7 +36,7 @@ const mockUsers: User[] = [
     phone: '0987654321',
     email: 'user@graceway.church',
     role: 'user',
-    profilePicture: '/placeholder.svg' // Added default profile picture
+    profilePicture: '/placeholder.svg'
   }
 ];
 
@@ -77,7 +78,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const register = async (data: Omit<User, 'id' | 'role'>) => {
-    // In a real app, this would make an API call
     const newUser: User = {
       ...data,
       id: Math.random().toString(),
@@ -100,6 +100,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Export the useAuth hook directly from this file
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
