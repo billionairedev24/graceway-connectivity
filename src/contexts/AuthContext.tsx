@@ -8,6 +8,7 @@ interface User {
   phone: string;
   email: string;
   role: 'admin' | 'user';
+  profilePicture?: string; // Added this line
 }
 
 interface AuthContextType {
@@ -19,21 +20,22 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// Mock users for development
 const mockUsers: User[] = [
   {
     id: '1',
     name: 'Admin User',
     phone: '1234567890',
     email: 'admin@graceway.church',
-    role: 'admin'
+    role: 'admin',
+    profilePicture: '/placeholder.svg' // Added default profile picture
   },
   {
     id: '2',
     name: 'Regular User',
     phone: '0987654321',
     email: 'user@graceway.church',
-    role: 'user'
+    role: 'user',
+    profilePicture: '/placeholder.svg' // Added default profile picture
   }
 ];
 
