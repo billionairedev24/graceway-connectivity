@@ -31,7 +31,7 @@ const AdminSidebar = () => {
   const navigate = useNavigate();
 
   return (
-    <Sidebar>
+    <Sidebar variant="inset" collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Admin Portal</SidebarGroupLabel>
@@ -39,7 +39,10 @@ const AdminSidebar = () => {
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton onClick={() => navigate(item.path)}>
+                  <SidebarMenuButton 
+                    onClick={() => navigate(item.path)}
+                    tooltip={item.title}
+                  >
                     <item.icon className="h-4 w-4" />
                     <span>{item.title}</span>
                   </SidebarMenuButton>

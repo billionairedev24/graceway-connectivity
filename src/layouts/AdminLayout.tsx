@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import AdminNavbar from '@/components/admin/AdminNavbar';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 
@@ -8,14 +8,14 @@ const AdminLayout = () => {
     <SidebarProvider defaultOpen={false}>
       <div className="min-h-screen flex w-full bg-gray-50">
         <AdminSidebar />
-        <div className="flex-1">
+        <SidebarInset>
           <AdminNavbar>
-            <SidebarTrigger className="md:hidden" />
+            <SidebarTrigger className="h-9 w-9 shrink-0" />
           </AdminNavbar>
           <main className="p-4">
             <Outlet />
           </main>
-        </div>
+        </SidebarInset>
       </div>
     </SidebarProvider>
   );
