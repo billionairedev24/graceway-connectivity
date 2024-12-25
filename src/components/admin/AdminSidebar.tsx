@@ -7,6 +7,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarHeader,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import {
   Calendar,
@@ -32,9 +34,12 @@ const AdminSidebar = () => {
 
   return (
     <Sidebar variant="inset" collapsible="icon">
+      <SidebarHeader className="flex items-center justify-between p-4">
+        <span className="font-semibold">Admin Portal</span>
+        <SidebarTrigger className="h-8 w-8" />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Admin Portal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
