@@ -3,7 +3,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -34,9 +33,11 @@ const AdminSidebar = () => {
 
   return (
     <Sidebar variant="inset" collapsible="icon">
-      <SidebarHeader className="flex items-center justify-between p-4">
-        <span className="font-semibold">Admin Portal</span>
-        <SidebarTrigger className="h-8 w-8" />
+      <SidebarHeader className="relative flex items-center border-b border-sidebar-border">
+        <span className="flex-1 p-4 font-semibold">Admin Portal</span>
+        <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-20">
+          <SidebarTrigger className="h-8 w-8 bg-background border border-border shadow-sm" />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
