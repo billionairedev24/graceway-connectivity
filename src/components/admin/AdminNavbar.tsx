@@ -1,13 +1,8 @@
 import { UserNav } from "@/components/user/UserNav";
-import { ReactNode } from "react";
 
-interface AdminNavbarProps {
-  children?: ReactNode;
-}
-
-const AdminNavbar = ({ children }: AdminNavbarProps) => {
+const AdminNavbar = () => {
   return (
-    <div className="border-b bg-background">
+    <div className="border-b bg-white">
       <div className="flex h-16 items-center px-4">
         <div className="ml-auto flex items-center space-x-4">
           <UserNav />
