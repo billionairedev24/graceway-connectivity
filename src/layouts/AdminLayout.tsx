@@ -6,9 +6,9 @@ import AdminSidebar from '@/components/admin/AdminSidebar';
 const AdminLayout = () => {
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full bg-gray-50/50">
+      <div className="min-h-screen flex w-full bg-[#F7F5FF]">
         <AdminSidebar />
-        <SidebarInset className="flex-1 min-w-0 bg-white">
+        <SidebarInset className="flex-1 min-w-0 bg-[#F7F5FF]">
           <AdminNavbar />
           <main className="p-4 overflow-auto">
             <Outlet />
