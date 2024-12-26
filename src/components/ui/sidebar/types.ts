@@ -16,3 +16,18 @@ export interface SidebarTriggerProps extends ButtonProps {
   iconOpen?: ReactNode
   iconClosed?: ReactNode
 }
+
+export interface SidebarProps {
+  side?: "left" | "right"
+  variant?: "sidebar" | "floating" | "inset"
+  collapsible?: "offcanvas" | "icon" | "none"
+  className?: string
+  children?: ReactNode
+}
+
+export interface SidebarMenuItemProps {
+  icon?: LucideIcon
+  title: string
+  path?: string
+  children?: ReactNode
+}

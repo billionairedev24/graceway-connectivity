@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
-import { PanelLeft } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useSidebar } from "./sidebar-context"
 import { SidebarTriggerProps } from "./types"
@@ -25,12 +25,13 @@ export const SidebarTrigger = React.forwardRef<
       {...props}
     >
       {state === "expanded" ? (
-        iconOpen || <PanelLeft className="h-4 w-4" />
+        iconOpen || <ChevronLeft className="h-4 w-4" />
       ) : (
-        iconClosed || <PanelLeft className="h-4 w-4 rotate-180" />
+        iconClosed || <ChevronRight className="h-4 w-4" />
       )}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
 })
+
 SidebarTrigger.displayName = "SidebarTrigger"
