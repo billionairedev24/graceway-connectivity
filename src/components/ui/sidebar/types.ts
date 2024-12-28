@@ -1,9 +1,13 @@
-import { ButtonProps } from "@/components/ui/button"
-import { LucideIcon } from "lucide-react"
-import { ReactNode } from "react"
+import { type VariantProps } from "class-variance-authority"
+import { type sidebarMenuButtonVariants } from "./variants"
 
-export type SidebarContext = {
-  state: "expanded" | "collapsed"
+export type SidebarState = "expanded" | "collapsed"
+export type SidebarSide = "left" | "right"
+export type SidebarVariant = "sidebar" | "floating" | "inset"
+export type SidebarCollapsible = "offcanvas" | "icon" | "none"
+
+export interface SidebarContext {
+  state: SidebarState
   open: boolean
   setOpen: (open: boolean) => void
   openMobile: boolean
@@ -12,22 +16,10 @@ export type SidebarContext = {
   toggleSidebar: () => void
 }
 
-export interface SidebarTriggerProps extends ButtonProps {
-  iconOpen?: ReactNode
-  iconClosed?: ReactNode
-}
-
-export interface SidebarProps {
-  side?: "left" | "right"
-  variant?: "sidebar" | "floating" | "inset"
-  collapsible?: "offcanvas" | "icon" | "none"
-  className?: string
-  children?: ReactNode
-}
-
-export interface SidebarMenuItemProps {
-  icon?: LucideIcon
-  title: string
-  path?: string
-  children?: ReactNode
+export interface SidebarMenuButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof sidebarMenuButtonVariants> {
+  asChild?: boolean
+  isActive?: boolean
+  tooltip?: string | React.ReactNode
 }

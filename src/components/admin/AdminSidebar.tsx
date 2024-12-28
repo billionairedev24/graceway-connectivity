@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/sidebar"
 import {
   Calendar,
-  ChevronRight,
-  ChevronLeft,
   Home,
   MessageSquare,
   PieChart,
@@ -37,11 +35,7 @@ const AdminSidebar = () => {
     <Sidebar variant="inset" collapsible="icon">
       <SidebarHeader className="relative flex items-center">
         <span className="flex-1 p-4 font-semibold">Admin Portal</span>
-        <SidebarTrigger 
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20"
-          iconOpen={<ChevronLeft className="h-4 w-4" />}
-          iconClosed={<ChevronRight className="h-4 w-4" />}
-        />
+        <SidebarTrigger className="absolute right-2 top-1/2 -translate-y-1/2 z-20" />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
